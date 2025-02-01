@@ -3,6 +3,7 @@ using AbpCMD.Data;
 using Serilog;
 using Serilog.Events;
 using Volo.Abp.Data;
+using Microsoft.AspNetCore.Authentication.Negotiate;
 
 namespace AbpCMD;
 
@@ -50,8 +51,25 @@ public class Program
                 builder.Services.AddDataMigrationEnvironment();
             }
             await builder.AddApplicationAsync<AbpCMDModule>();
+
+            // 添加身份验证服务
+            builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+                .AddNegotiate();
+
+            // 添加授权服务
+            builder.Services.AddAuthorization(options =>
+            {
+                // 可以根据需要添加授权策略
+                options.FallbackPolicy = options.DefaultPolicy;
+            });
+
             var app = builder.Build();
             await app.InitializeApplicationAsync();
+
+            // 启用身份验证和授权中间件
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             if (IsMigrateDatabase(args))
             {
