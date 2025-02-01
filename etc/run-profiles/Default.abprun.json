@@ -1,0 +1,12 @@
+﻿{
+  "applications": {
+    "AbpCMD": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44321",
+      "path": "../../AbpCMD/AbpCMD.csproj",
+      "execution": {
+        "order": 0
+      }
+    }
+  }
+}
