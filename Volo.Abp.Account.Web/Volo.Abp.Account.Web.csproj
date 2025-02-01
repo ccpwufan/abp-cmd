@@ -33,6 +33,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="9.0.1" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="9.0.4" />
     <PackageReference Include="Volo.Abp.Identity.AspNetCore" Version="9.0.4" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="9.0.4" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="9.0.4" />

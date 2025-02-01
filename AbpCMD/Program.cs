@@ -49,7 +49,12 @@ public class Program
             {
                 builder.Services.AddDataMigrationEnvironment();
             }
+
+
             await builder.AddApplicationAsync<AbpCMDModule>();
+
+
+
             var app = builder.Build();
             await app.InitializeApplicationAsync();
 
