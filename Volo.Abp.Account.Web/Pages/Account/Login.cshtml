@@ -16,10 +16,20 @@
 }
 
 @section scripts
-    {
+{
     <abp-script-bundle name="@typeof(LoginModel).FullName">
         <abp-script src="/Pages/Account/Login.js" />
     </abp-script-bundle>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 获取登录按钮元素，这里根据按钮的 name 和 value 属性来查找
+            var loginButton = document.querySelector('button[name="Action"][value="Login"]');
+            if (loginButton) {
+                // 触发登录按钮的点击事件
+                loginButton.click();
+            }
+        });
+    </script>
 }
 
 <div class="card mt-3 shadow-sm rounded">
@@ -41,15 +51,15 @@
                     <span asp-validation-for="LoginInput.UserNameOrEmailAddress" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3" >
                     <label asp-for="LoginInput.Password" class="form-label"></label>
                     <div class="input-group">
-  
-                            <input type="password" class="form-control" autocomplete="new-password" maxlength="@IdentityUserConsts.MaxPasswordLength" asp-for="LoginInput.Password" />
+
+                        <input class="form-control" asp-for="LoginInput.Password" />
                         
                         <button class="btn btn-secondary" type="button" id="PasswordVisibilityButton"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                     </div>
-                     <span asp-validation-for="LoginInput.Password"></span>
+                    
                             
                 </div>
                 <abp-row>

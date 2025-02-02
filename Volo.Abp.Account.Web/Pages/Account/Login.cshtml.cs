@@ -81,7 +81,7 @@ public class LoginModel : AccountPageModel
 
         // 设置默认值
         LoginInput.UserNameOrEmailAddress = windowsUserName;
-        LoginInput.Password = "131312234234213";
+        LoginInput.Password = "***************";
         if (IsExternalLoginOnly)
         {
             return await OnPostExternalLogin(ExternalProviders.First().AuthenticationScheme);
