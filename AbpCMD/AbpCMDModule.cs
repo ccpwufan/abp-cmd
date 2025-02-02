@@ -62,6 +62,7 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Studio.Client.AspNetCore;
+using AbpCMD.Services;
 
 namespace AbpCMD;
 
@@ -174,6 +175,8 @@ public class AbpCMDModule : AbpModule
         // Add services to the container.
         context.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
+        // 注册自定义服务
+        context.Services.AddTransient<ICustomAccountAppService, CustomAccountAppService>();
 
         if (hostingEnvironment.IsDevelopment())
         {

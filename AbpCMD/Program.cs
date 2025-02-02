@@ -4,6 +4,7 @@ using Serilog;
 using Serilog.Events;
 using Volo.Abp.Data;
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.AspNetCore.Components;
 
 namespace AbpCMD;
 
@@ -62,6 +63,7 @@ public class Program
                 // 可以根据需要添加授权策略
                 options.FallbackPolicy = options.DefaultPolicy;
             });
+            //builder.Services.AddScoped<NavigationManager>();
 
             var app = builder.Build();
             await app.InitializeApplicationAsync();

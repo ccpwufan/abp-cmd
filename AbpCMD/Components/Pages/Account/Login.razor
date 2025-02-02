@@ -1,22 +1,47 @@
-﻿@page "/Account/Login"
-@using Volo.Abp.AspNetCore.Components.Web.Theming.PageToolbars
-@using Microsoft.AspNetCore.Components.Authorization
-@inject AuthenticationStateProvider AuthenticationStateProvider
+﻿@page "/Account/LoginNoPassword"
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components
+@using Volo.Abp.Account
+@using AbpCMD.Services
 
+
+@inject ICustomAccountAppService CustomAccountAppService
+@inject NavigationManager NavigationManager
+
+<h3>无密码登录</h3>
+
+<EditForm Model="@loginInput" OnValidSubmit="HandleLoginWithoutPassword">
+    <DataAnnotationsValidator />
+    <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+    <div>
+        <label for="username">用户名:</label>
+        <InputText id="username" @bind-Value="loginInput.Username" />
+    </div>
+
+    <button type="submit">登录</button>
+</EditForm>
 
 @code {
-    private string UserName;
+    private LoginWithoutPasswordInput loginInput = new LoginWithoutPasswordInput();
 
-    protected override async Task OnInitializedAsync()
+    private async Task HandleLoginWithoutPassword()
     {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-
-        if (user.Identity.IsAuthenticated)
+        try
         {
-            UserName = user.Identity.Name;
+            await CustomAccountAppService.LoginWithoutPasswordAsync(loginInput.Username);
+            // 登录成功后导航到主页
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            // 处理登录失败的情况
+            Console.WriteLine($"登录失败: {ex.Message}");
         }
     }
-}
 
-<h3>Hello, @UserName!</h3>
+    public class LoginWithoutPasswordInput
+    {
+        public string Username { get; set; }
+    }
+}
