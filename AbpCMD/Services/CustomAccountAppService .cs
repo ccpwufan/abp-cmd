@@ -44,8 +44,15 @@
                 throw new UserFriendlyException("用户不存在！");
             }
 
-            // 使用 SignInManager 登录用户
-            await _signInManager.SignInAsync(user, isPersistent: false);
+            // 使用 SignInManager 登录用户 1q2w3E*
+            //await _signInManager.SignInAsync(user, isPersistent: false);
+
+            // 清除会话状态
+            await _signInManager.SignOutAsync();
+
+            // 使用 PasswordSignInAsync 登录用户
+            var result = await _signInManager.PasswordSignInAsync(user, "1q2w3E*", false, false);
+
 
             // 返回成功结果
             return;
