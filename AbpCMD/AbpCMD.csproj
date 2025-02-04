@@ -92,14 +92,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\Account\**" />
     <Content Remove="Localization\AbpCMD\*.json" />
     <EmbeddedResource Include="Localization\AbpCMD\*.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\Pages\Account\**" />
     <Compile Remove="Logs\**" />
     <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Components\Pages\Account\**" />
     <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Components\Pages\Account\**" />
     <None Remove="Logs\**" />
   </ItemGroup>
 
@@ -114,10 +118,6 @@
 
   <ItemGroup>
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Components\Pages\Account\" />
   </ItemGroup>
 
   <ItemGroup>
