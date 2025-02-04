@@ -1,0 +1,14 @@
+﻿
+@using Volo.Abp.AspNetCore.Components.Server.LeptonXLiteTheme.Themes.LeptonXLite.Toolbar;
+@using Volo.Abp.DependencyInjection
+
+@inherits UserMenuComponent
+@attribute [ExposeServices(typeof(UserMenuComponent))]
+@attribute [Dependency(ReplaceServices = true)]
+
+@CurrentUser.Name @CurrentUser.SurName
+
+@code {
+    string Name = "My User Menu Component";
+}
+
