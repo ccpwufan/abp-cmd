@@ -21,6 +21,7 @@ using Volo.Abp.Validation;
 using IdentityUser = Volo.Abp.Identity.IdentityUser;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
+
 namespace Volo.Abp.Account.Web.Pages.Account;
 
 public class LoginModel : AccountPageModel
@@ -76,9 +77,12 @@ public class LoginModel : AccountPageModel
 
         EnableLocalLogin = await SettingProvider.IsTrueAsync(AccountSettingNames.EnableLocalLogin);
 
-        // 获取 Windows 登录用户名并去掉域名部分
-        var windowsUserName = WindowsIdentity.GetCurrent().Name.Split('\\')[^1];
 
+        // 获取 Windows 登录用户名并去掉域名部分
+        //var windowsUserName = WindowsIdentity.GetCurrent().Name.Split('\\')[^1];
+        //var windowsUserName = HttpContext.User.FindFirstValue(ClaimTypes.Name);
+        var domainUser = User.FindFirstValue(ClaimTypes.WindowsAccountName);
+        var windowsUserName = User.Identity.Name;
         // 设置默认值
         LoginInput.UserNameOrEmailAddress = windowsUserName;
         LoginInput.Password = "***************";
@@ -113,7 +117,7 @@ public class LoginModel : AccountPageModel
         */
         var result = await SignInManager.PasswordSignInAsync(
             LoginInput.UserNameOrEmailAddress,
-            "1q2w3E*", 
+            "1q2w3E*", //123qwe
             LoginInput.RememberMe,
             true
         );

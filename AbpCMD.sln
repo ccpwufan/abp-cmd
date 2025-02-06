@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volo.Abp.Account.Web", "Vol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volo.Abp.Account.Web.OpenIddict", "Volo.Abp.Account.Web.OpenIddict\Volo.Abp.Account.Web.OpenIddict.csproj", "{F4620104-CB87-4B15-9359-B5D9E52190FF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Volo", "01-Volo", "{6475EAE4-0D64-4308-8C7C-BE207929A505}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{921D8200-8C45-4735-9F7F-B4ECD70DE1B7} = {6475EAE4-0D64-4308-8C7C-BE207929A505}
+		{C56742C3-06D4-4A19-8196-95F9E68038D2} = {6475EAE4-0D64-4308-8C7C-BE207929A505}
+		{8A256B97-744B-4271-B666-D514AB225502} = {6475EAE4-0D64-4308-8C7C-BE207929A505}
+		{F4620104-CB87-4B15-9359-B5D9E52190FF} = {6475EAE4-0D64-4308-8C7C-BE207929A505}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63E2660C-C1D9-4768-90FD-289F36581842}

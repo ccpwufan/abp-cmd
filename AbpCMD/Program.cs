@@ -4,6 +4,8 @@ using Serilog;
 using Serilog.Events;
 using Volo.Abp.Data;
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Polly;
+using Volo.Abp.AspNetCore.Components.Web;
 
 namespace AbpCMD;
 
@@ -19,6 +21,13 @@ public class Program
         try
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // 关键配置开始
+            builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+                .AddNegotiate(); // 添加 Windows 认证
+
+
+
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog((context, services, loggerConfiguration) =>

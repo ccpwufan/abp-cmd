@@ -62,6 +62,9 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Studio.Client.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Negotiate;
+
+
 
 namespace AbpCMD;
 
@@ -170,6 +173,9 @@ public class AbpCMDModule : AbpModule
     {
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
+
+
+
 
         // Add services to the container.
         context.Services.AddRazorComponents()
